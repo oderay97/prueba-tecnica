@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.container{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+body{
+    background-color: #3e94ec;
+    font-family: "roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+}
+div.table-title{
+    display: block;
+    margin: auto;
+    max-width: 600px;
+    padding: 5px;
+    width: 100%;
+}
+.table-title h3{
+    color: #fafafa;
+    font-size: 30px;
+    font-weight: 400;
+    font-style: normal;
+    font-family: "roboto", sans-serif;
+    text-shadow: -1px 1px rgba(0,0,0,0.1);
+    text-transform: uppercase;
+}
+.table-fill{
+    background: white;
+    border-radius: 3px;
+    border-collapse: collapse;
+    height: 320px;
+    margin: auto;
+    max-width: 600px;
+    padding: 5px;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    animation: float 5s infinite;
+}
+th{
+    color: #d5d5d5;
+    background-color: #22241b;
+    border-bottom: 4px solid #9ea7af;
+    border-right: 1px solid #343a34;
+    font-size: 23px;
+    font-weight: 100px;
+    padding: 24px;
+    text-align: left;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    vertical-align: niddle;
+}
+th:first-child{
+    border-top-left-radius: 3px;
+
+}
+th:last-child{
+    border-top-right-radius: 3px;
+    border-right: none;
+}
+
+tr{
+    border-top: 1px solid #C1c3d1;
+    border-bottom: 1px solid #C1c3d1;
+    color: #666b85;
+    font-size: 16px;
+    font-weight: normal;
+    text-shadow: 0 1px 1px rgba(256, 250);
+    
+}
+tr:hover td{
+background:  #fae102;
+color: #fff;
+border-top: 1px solid #22262e;
+}
+tr:first-child{
+    border-top: none;
+}
+
+tr:last-child{
+    border-bottom: none;
+}
+tr:nth-child(odd) td{
+    background: #ebebeb;
+}
+tr:nth-child(odd):hover td{
+    background: #fae102;
+}
+tr:last-child td:first-child{
+    border-bottom-left-radius: 3px;
+}
+tr:last-child td:last-child{
+    border-bottom-right-radius: 3px ;
+}
+td{
+    background: #fff;
+    padding: 20px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 18px;
+    text-shadow:  -1px -1px 1px
+    rgba(0,0,0,0.1);
+    border-right: 1px solid #c1c3d1;
+
+}
+
+
+.btn{
+    border-radius: 3px;
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    margin-left: 760px;
+    margin-top: 10px;
+}
+
