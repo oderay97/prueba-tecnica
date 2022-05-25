@@ -5,38 +5,92 @@
        
         <title>Proyecto cochez oderay</title>
          <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="style.css"/> 
-       
+ 
+        <!-- Bootstrap 5 CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">     
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="style.css"/>  
     </head>
-    <body>
+    <body> 
     <div class="container">   
 <div class="table-title">
-    <h3>Clientes</h3>
+    <h3>Clientes ultimos cambios</h3>
 </div>
 <div>
-    <button class="btn btn-danger w100 mb-4" click="filtrar()">clientes gold</button>
+    <divclass="btn-group" role="group" aria-label="Horizontal Button Group">
+        <button class="btn btn-danger w100 mb-4" click="filtrar()">clientes gold</button>
+
+    
+    </div>
+
 </div>
 <table class="table-fill">
  <thead>
 
      <tr>   
      <th class="table-left">Nombre </th> 
-     <th class="table-left">Apellido </th>
-     <th class="table-left">Email </th>
+     <th class="table-left">Apellido </th> 
      <th class="table-left">Balance</th> 
-     <th class="table-left"> Acciones</th>
+     <th class="table-left">Seleccionar</th>
      </tr>
     </thead>
     <tbody id="data">
       
         </div> 
+
+        <div class="modal fade" id="Antigue-Modal" tabindex="-1" aria-labelledby="AntiguedadModalLabel" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="AntiguedadModalLabel">Ver Antiguedad</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span class="input-group-addon" style="width:150px;">Antiguedad</span>
+                    <input type="text" style="width:350px;" class="form-control" name="antigue" id="idantigue" readonly>
+                   
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="modal fade" id="detalle-Modal" tabindex="-1" aria-labelledby="DetalledadModalLabel" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="DetalleModalLabel">Ver Detalle</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                   
+                    <span class="input-group-addon" style="width:150px;">Dirección</span>
+                    <input type="text" style="width:350px;" class="form-control" name="dir" id="iddir" readonly>
+
+                    <span class="input-group-addon" style="width:150px;">Fecha de Creación</span>
+                    <input type="text" style="width:350px;" class="form-control" name="fecha" id="idfecha" readonly>
+  
+                    <span class="input-group-addon" style="width:150px;">Balance</span>
+                    <input type="text" style="width:350px;" class="form-control" name="balance" id="idbalance" readonly>                    
+                    
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
     </tbody>
 </table>
 
 
 <script src="app.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script> 
 </div> 
 </body>
 </html>

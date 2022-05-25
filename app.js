@@ -1,23 +1,26 @@
+var datos=JSON.stringify();
+
 let url = 'https://randomapi.com/api/6de6abfedb24f889e0b5f675edc50deb?fmt=raw&sole'
     fetch(url)
     .then(response=> response.json())
     .then(data => mostrarData(data))
     .catch(error => console.log(error))
     const mostrarData = (data) => {
-        console.log(data)
+      datos = data;
+      console.log(datos)
         let body = ''
         for (let i = 0; i <data.length; i++){
-            body += `<tr><td>${data[i].first}</td><td>${data[i].last}</td><td>${data[i].email}</td><td>${data[i].balance}<td><button style="color:red" click="showmodal();">
-            Ver antigüedad
-            </button> <button  style="color:red" click="showmodal();">
-            Ver detalles
-            </button></td></tr>`
+            body += `<tr><td>${data[i].first}</td><td>${data[i].last}</td><td hidden>${data[i].address}</td><td hidden>${data[i].created}</td><td>${data[i].balance}</td><td><input type="checkbox" /> <div class="container"><div class="row"><div class="col"><button  style="background-color: blue; border-radius: 5px;" class=" w100 mb-4 anti" onclick="antiguedad()" data-bs-toggle="modal" data-bs-target="#Antigue-Modal" >Antigüedad </button> 
+            <div class="col"><button class=" w100 mb-4 anti" style="background-color: green; border-radius: 5px" onclick="detalle()" data-bs-toggle="modal" data-bs-target="#detalle-Modal" >Ver Detalle </button>
+            </div>
+            </div>
+            </div></td></tr>`
              document.getElementById('data').innerHTML = body
              
         }
        
     }
-    
+
 const btn = document.querySelector("button");
 
 btn.addEventListener("click", function(){
@@ -31,19 +34,29 @@ btn.addEventListener("click", function(){
             for (let i = 0; i < data.length; i++){
                     let currentNumber = data[i].balance.replace(/[$,]/g, "");
                     if(currentNumber > 5000){
+                      var created= data[i].created;
+                      //calcular años
+                      var fechaCreated = new Date(created);
+                      var fechaHoy = new Date();
+                      var edad = fechaHoy.getFullYear() - fechaCreated.getFullYear();
                         body +=`
-                        <tr></tr><td>${data[i].first}</td>
+                        
+                        <tr><td>${data[i].first}</td>
                         <td>${data[i].last}</td>
-                        <td>${data[i].email}</td>
-                        <td>${currentNumber}</td>
-                        <td><button  style="color:red" click="showmodal();">
-                        Ver antigüedad
-                        </button> <button  style="color:red" click="showmodal();">
-                        Ver detalles
-                        </button></td>
+                        <td hidden>${data[i].address}</td>
+                        <td hidden>${data[i].created}</td>
+                        <td>${data[i].balance}</td>
+                        <td><input type="checkbox" />
+                        <div class="container"><div class="row"><div class="col"><button  style="background-color: blue; border-radius: 5px;" class=" w100 mb-4 anti" onclick="antiguedad()" data-bs-toggle="modal" data-bs-target="#Antigue-Modal" >Antigüedad </button> 
+                        <div class="col"><button class=" w100 mb-4 anti" style="background-color: green; border-radius: 5px" onclick="detalle()" data-bs-toggle="modal" data-bs-target="#detalle-Modal" >Ver Detalle </button>
+                        </div>
+                        </div>
+                        </div>
+                        </td>
                         </tr>
                         `
-                        document.getElementById('data').innerHTML = body
+                        document.getElementById('data').innerHTML = body;                     
+
                     }
                                      
             }
@@ -51,41 +64,95 @@ btn.addEventListener("click", function(){
            }
 });
 
-const modal = document.querySelector("button");
 
-modal.addEventListener("click", function(){
-         
-  fetch(url)
-           .then(res => res.json())
-           .then(data => mostrarData(data))
-           const mostrarData = (data) => {
-var modalwrap = null;
-const showmodal = () => {
-  if(modalwrap !== null){
-    modalwrap.remove();
+ function antiguedad() {
+  tab = document.getElementById('data');
+  
+  console.log(datos)
+  for (i=tab.getElementsByTagName('input').length-1; i>=0; i--) {
+      
+    chk = tab.getElementsByTagName('input')[i];
+           if (chk.checked){
+              var row2 = tab.getElementsByTagName('tr')[i].innerText;
+              //console.log(i);
+             
+
+              if (row2!=undefined) {
+                  
+                   var created = tab.getElementsByTagName('tr')[i].cells[3].innerText;
+                //calcular años
+                var fechaCreated = new Date(created);
+                var fechaHoy = new Date();
+                var edad = fechaHoy.getFullYear() - fechaCreated.getFullYear();  
+                //console.log(edad+' años');
+                 
+                var myEdad = document.getElementById("idantigue");
+                    myEdad.value = edad+' '+'años'; 
+
+              }
+                        
+           }
+                    
+
   }
-    modalwrap = document.createElementById('div');
- modalwrap.innerHTML = `
-  <div class="modal" tabindex="-1">
- <div class="modal-dialog">
-   <div class="modal-content">
-     <div class="modal-header">
-       <h5 class="modal-title">Modal title</h5>
-       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-     </div>
-     <div class="modal-body">
-       <p>Modal body text goes here.</p>
-     </div>
-     <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-       <button type="button" class="btn btn-primary">Save changes</button>
-     </div>
-   </div>
- </div>
-</div> `;
-}  
-document.body.append(modalwrap);
-var modal = new bootstrap.modal(modalwrap.querySelector('.modal'));
-modal.showmodal();
-}
-})
+};
+
+function detalle() {
+  tab = document.getElementById('data');
+  let body = ''
+  for (i=tab.getElementsByTagName('input').length-1; i>=0; i--) {
+     
+    chk = tab.getElementsByTagName('input')[i];
+           if (chk.checked){
+              var row2 = tab.getElementsByTagName('tr')[i].innerText;
+              console.log(i);
+              
+
+              if (row2!=undefined) {
+                   
+                   var nombre = tab.getElementsByTagName('tr')[i].cells[0].innerText;
+                   var apellido = tab.getElementsByTagName('tr')[i].cells[1].innerText;
+                   var address = tab.getElementsByTagName('tr')[i].cells[2].innerText;
+                   var created = tab.getElementsByTagName('tr')[i].cells[3].innerText;
+                   var balance = tab.getElementsByTagName('tr')[i].cells[4].innerText;
+
+                   console.log(nombre)
+                   console.log(apellido)
+                   console.log(address)
+                   console.log(created)
+                   console.log(balance)
+
+                //calcular años
+                var fechaCreated = new Date(created);
+                var fechaHoy = new Date();
+                var edad = fechaHoy.getFullYear() - fechaCreated.getFullYear();  
+                console.log(edad+' años');
+                //$('#anti').modal('show');
+                var myDireccion = document.getElementById("iddir");
+                    myDireccion.value = address; 
+
+                var myFecha = document.getElementById("idfecha");
+                myFecha.value = created;  
+
+                var myBalance = document.getElementById("idbalance");
+                myBalance.value = balance;
+                let currentNumber = balance.replace(/[$,]/g, "");
+                if(currentNumber > 1500) {
+                  $(myBalance).css("background-color", "green");
+                  $(myBalance).css("color", "white");
+                  $(myBalance).css("font-weight: bold");
+                }
+                else{
+                  $(myBalance).css("background-color", "blue");
+                  $(myBalance).css("color", "white");
+                  $(myBalance).css("font-weight: bold");
+                }                              
+
+              }
+                        
+           }
+                    
+
+  }
+};
+
