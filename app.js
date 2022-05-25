@@ -10,8 +10,8 @@ let url = 'https://randomapi.com/api/6de6abfedb24f889e0b5f675edc50deb?fmt=raw&so
       console.log(datos)
         let body = ''
         for (let i = 0; i <data.length; i++){
-            body += `<tr><td>${data[i].first}</td><td>${data[i].last}</td><td hidden>${data[i].address}</td><td hidden>${data[i].created}</td><td>${data[i].balance}</td><td><input type="checkbox" /> <div class="container"><div class="row"><div class="col"><button  style="background-color: blue; border-radius: 5px;" class=" w100 mb-4 anti" onclick="antiguedad()" data-bs-toggle="modal" data-bs-target="#Antigue-Modal" >Antigüedad </button> 
-            <div class="col"><button class=" w100 mb-4 anti" style="background-color: green; border-radius: 5px" onclick="detalle()" data-bs-toggle="modal" data-bs-target="#detalle-Modal" >Ver Detalle </button>
+            body += `<tr><td>${data[i].first}</td><td>${data[i].last}</td><td hidden>${data[i].address}</td><td hidden>${data[i].created}</td><td>${data[i].balance}</td><td><input type="checkbox" /> <div class="container"><div class="row"><div class="col"><button  style="background-color: blue; color: #fafafa; border-radius: 5px;" class=" w100 mb-4 anti" onclick="antiguedad()" data-bs-toggle="modal" data-bs-target="#Antigue-Modal" >Antigüedad </button> 
+            <div class="col"><button class=" w100 mb-4 anti" style="background-color: green; color: #fafafa; border-radius: 5px" onclick="detalle()" data-bs-toggle="modal"  data-bs-target="#detalle-Modal" >Ver Detalle </button>
             </div>
             </div>
             </div></td></tr>`
@@ -46,9 +46,9 @@ btn.addEventListener("click", function(){
                         <td hidden>${data[i].address}</td>
                         <td hidden>${data[i].created}</td>
                         <td>${data[i].balance}</td>
-                        <td><input type="checkbox" />
-                        <div class="container"><div class="row"><div class="col"><button  style="background-color: blue; border-radius: 5px;" class=" w100 mb-4 anti" onclick="antiguedad()" data-bs-toggle="modal" data-bs-target="#Antigue-Modal" >Antigüedad </button> 
-                        <div class="col"><button class=" w100 mb-4 anti" style="background-color: green; border-radius: 5px" onclick="detalle()" data-bs-toggle="modal" data-bs-target="#detalle-Modal" >Ver Detalle </button>
+                        <td><input  type="checkbox" />
+                        <div class="container"><div class="row"><div class="col"><button  style="background-color: blue; color: #fafafa;  border-radius: 5px;" class=" w100 mb-4 anti" onclick="antiguedad()" data-bs-toggle="modal" data-bs-target="#Antigue-Modal" >Antigüedad </button> 
+                        <div class="col"><button class=" w100 mb-4 anti" style="background-color: green; color: #fafafa; border-radius: 5px" onclick="detalle()" data-bs-toggle="modal" data-bs-target="#detalle-Modal" >Ver Detalle </button>
                         </div>
                         </div>
                         </div>
